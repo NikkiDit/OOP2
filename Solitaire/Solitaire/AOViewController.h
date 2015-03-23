@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+
+
 @interface AOViewController : UIViewController
+@property (strong, nonatomic) UIView *cardView;
+
 
 @end
