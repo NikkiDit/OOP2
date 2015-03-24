@@ -11,7 +11,7 @@
 @interface AOViewController ()
 
 @end
-const CGFloat CardWidth = 40.0f;   // this includes drop shadows
+const CGFloat CardWidth = 30.0f;   // this includes drop shadows
 const CGFloat CardHeight = 40.0f;
 
 
@@ -27,10 +27,12 @@ const CGFloat CardHeight = 40.0f;
 
 - (void) createCardDeck{
     int x= 4;
-    int y = 4;
-    for (int i=1; i<7; i++) {
-        
-        for (int j=1; j<13; j++) {
+    
+    for (int i=1; i<=7; i++) {
+        int y = 4;
+       int  b =random() % 10;
+      //  NSLog(@"%d@", b);
+            for (int j=1; j<=b; j++) {
             
             CGRect  viewRect = CGRectMake(x, y, CardWidth, CardHeight);
             UIView *view = [[UIView alloc] initWithFrame:viewRect];
