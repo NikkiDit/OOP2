@@ -21,6 +21,7 @@
 		B39588041AC09A33004FECFD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B39587E61AC09A33004FECFD /* UIKit.framework */; };
 		B395880C1AC09A33004FECFD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B395880A1AC09A33004FECFD /* InfoPlist.strings */; };
 		B395880E1AC09A33004FECFD /* SolitaireTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B395880D1AC09A33004FECFD /* SolitaireTests.m */; };
+		B3E553401AC2093100324214 /* AOCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E5533F1AC2093100324214 /* AOCardView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		B39588091AC09A33004FECFD /* SolitaireTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SolitaireTests-Info.plist"; sourceTree = "<group>"; };
 		B395880B1AC09A33004FECFD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B395880D1AC09A33004FECFD /* SolitaireTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SolitaireTests.m; sourceTree = "<group>"; };
+		B3E5533E1AC2093100324214 /* AOCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOCardView.h; sourceTree = "<group>"; };
+		B3E5533F1AC2093100324214 /* AOCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOCardView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				B39587F41AC09A33004FECFD /* Main.storyboard */,
 				B39587F71AC09A33004FECFD /* AOViewController.h */,
 				B39587F81AC09A33004FECFD /* AOViewController.m */,
+				B3E5533E1AC2093100324214 /* AOCardView.h */,
+				B3E5533F1AC2093100324214 /* AOCardView.m */,
 				B39587FA1AC09A33004FECFD /* Images.xcassets */,
 				B39587E91AC09A33004FECFD /* Supporting Files */,
 			);
@@ -250,6 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3E553401AC2093100324214 /* AOCardView.m in Sources */,
 				B39587F31AC09A33004FECFD /* AOAppDelegate.m in Sources */,
 				B39587F91AC09A33004FECFD /* AOViewController.m in Sources */,
 				B39587EF1AC09A33004FECFD /* main.m in Sources */,
@@ -457,6 +463,7 @@
 				B39588131AC09A33004FECFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B39588141AC09A33004FECFD /* Build configuration list for PBXNativeTarget "SolitaireTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +472,7 @@
 				B39588161AC09A33004FECFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
