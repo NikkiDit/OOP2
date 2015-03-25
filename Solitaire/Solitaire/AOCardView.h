@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface AOCardView : NSObject
-@property (nonatomic, weak) UIImage *suits;
-@property (nonatomic, weak) UILabel *cardNum;
+@property (nonatomic, retain) NSString *suit;
+@property (nonatomic, retain) NSString *face;
 
+@property (nonatomic, readonly) NSInteger value;
+
+- (id)initWithFace:(NSString*)face suit:(NSString*)suit;
 
 @end
