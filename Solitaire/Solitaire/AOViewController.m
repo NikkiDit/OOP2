@@ -18,11 +18,11 @@
 
 
 
-const CGFloat CardWidth = 42.0f;   // this includes drop shadows
-const CGFloat CardHeight = 60.0f;
+const CGFloat CardWidth = 43.0f;   // this includes drop shadows
+const CGFloat CardHeight = 50.0f;
 
 const CGFloat SuitWidth = 17.0f;   // this includes drop shadows
-const CGFloat SuitHeight = 10.0f;
+const CGFloat SuitHeight = 13.0f;
 
 const CGFloat FaceWidth = 20.0f;   // this includes drop shadows
 const CGFloat FaceHeight = 13.0f;
@@ -57,18 +57,11 @@ const CGFloat FaceHeight = 13.0f;
             
             }
     }
-    
-        NSLog(@"%d@", _deck.count);
-    for (AOCardView *card in _deck){
-        // if ([cardView.face isEqualToString:face ] && [cardView.suit isEqualToString:suit]){
-        //       NSLog(@"matched");
-        //   }else{
-        //       [_deck addObject:cardView];}
-      // NSLog(@"%@", card.description);
-    
-    
-    }
-
+   // int suitnum = 1;
+  //  for (AOCardView *card in _deck){
+      //  NSLog(@"%@", card.suit );
+      //  NSLog(@"%d", suitnum++);
+   // }
 }
 
 
@@ -79,16 +72,22 @@ const CGFloat FaceHeight = 13.0f;
 
 
 
-- (void) createCardDeck{
-     NSArray *suits = @[@"♣", @"♥", @"♠", @"♦"];
-    NSArray *faces = @[@"A", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"J", @"Q", @"K"];
-    
-   
-    int x= 5;
 
+- (void) createCardDeck{
+    
+    int labelCount = [_deck count];
+    int  b;
+    int x= 5;
+    int m = 0;
     for (int i=1; i<=7; i++) {
         int y = 20;
-        int  b =random() % 12;
+        if (i==7){
+            b=labelCount-m;
+        }else{
+            
+            b=random() % 12;
+        }
+        
      
             for (int j=1; j<=b; j++) {
             
@@ -98,8 +97,11 @@ const CGFloat FaceHeight = 13.0f;
                 ;
                 view.clipsToBounds = YES;
                 view.backgroundColor = [UIColor whiteColor];
-                UILabel *viewLabel = [[UILabel alloc] initWithFrame:CGRectMake(2,6,FaceWidth,FaceHeight)];
-                UILabel *viewLabel1 = [[UILabel alloc] initWithFrame:CGRectMake(10,24,SuitWidth,SuitHeight)];
+              //  UILabel *viewLabel = [[UILabel alloc] initWithFrame:CGRectMake(2,6,FaceWidth,FaceHeight)];
+               // UILabel *viewLabel1 = [[UILabel alloc] initWithFrame:CGRectMake(10,24,SuitWidth,SuitHeight)];
+                 UILabel *viewLabel3 = [[UILabel alloc] initWithFrame:CGRectMake(10,10,SuitWidth,SuitHeight)];
+                [viewLabel3  setContentScaleFactor:0.2f];
+                viewLabel3.clipsToBounds = YES;
                 
                 
                 view.layer.cornerRadius = 5;
@@ -107,29 +109,32 @@ const CGFloat FaceHeight = 13.0f;
                 view.layer.borderColor =[UIColor grayColor].CGColor;
             
                 
-       id index =_deck[arc4random()% [_deck count]];
-                NSLog(@"%@", index);
+             
+                    AOCardView *card =[_deck objectAtIndex:random() % [_deck count]];
+                    viewLabel3.text = card.description;
                 
+                //    NSLog(@"%@", viewLabel3.text);
                 
-                
-                
-                viewLabel.text =faces[arc4random()%faces.count];
-                viewLabel1.text = suits[arc4random()%suits.count];
-                if([viewLabel1.text isEqualToString:@"♥" ] ||[viewLabel.text isEqualToString:@"♦"]){
-                    viewLabel.textColor = [UIColor redColor];
+               if([viewLabel3.text containsString:@"♥" ] ||[viewLabel3.text containsString:@"♦"]){
+                    viewLabel3.textColor = [UIColor redColor];
                 }
-                
-                    [view addSubview:viewLabel];
-                
+               // }
             
-                [view addSubview:viewLabel1];
-                
+                [view addSubview:viewLabel3];
+                //[view addSubview:viewLabel1];
                 [self.view addSubview:view];
-          
-            y =y-20+CardHeight;
-        }
-        x=x+2+CardWidth;
-    }
+                [_deck removeObject:card];
+                y =y-20+CardHeight;
+                
+                if (m<(labelCount+1)) {
+                    m =m+1;
+                }else{
+                    return;
+                }
+            }
+        x=x+1+CardWidth;
+        
+            }
     
 }
 
