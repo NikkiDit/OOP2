@@ -12,8 +12,6 @@
 @interface AOViewController ()
 @property (nonatomic,strong) NSMutableArray *deck;
 
-
-
 @end
 
 
@@ -34,13 +32,14 @@ const CGFloat FaceHeight = 8.0f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     [self setupDeck];
     [self createCardDeck];
+   
     
 }
 -(void)setupDeck{
-    
-    
+    // create the card deck array
     NSArray *faces = @[@"A", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"J", @"Q", @"K"];
     NSArray *suits = @[@"♣", @"♥", @"♠", @"♦"];
     
@@ -51,16 +50,20 @@ const CGFloat FaceHeight = 8.0f;
             AOCardView *cardView = [[AOCardView alloc] initWithFace:face suit:suit];
             [_deck addObject:cardView];
         }
+        
     }
-  
+    //  shuffle the card deck array
+    for (NSUInteger i = [_deck count] - 1; i > 0; i--) {
+        NSUInteger n = arc4random_uniform(i + 1);
+        [_deck exchangeObjectAtIndex:i withObjectAtIndex:n];
+    }
+   
 }
 
 
 
-
-
 - (void) createCardDeck{
-    
+  
     int labelCount = [_deck count];
     int  b;
     int x= 15;
@@ -118,9 +121,6 @@ const CGFloat FaceHeight = 8.0f;
     }
     
 }
-
-
-
 
 
          
