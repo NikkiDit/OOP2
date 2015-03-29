@@ -18,32 +18,16 @@
     return self;
 }
 
-- (NSInteger)value{
-    NSDictionary *values = @{
-                             @"A": @10,
-                             @"1": @1,
-                             @"2": @2,
-                             @"3": @3,
-                             @"4": @4,
-                             @"5": @5,
-                             @"6": @6,
-                             @"7": @7,
-                             @"8": @8,
-                             @"9": @9,
-                             @"10": @10,
-                             @"J": @10,
-                             @"Q": @10,
-                             @"K": @10
-                             };
+-(void)matched:(NSArray *)otherCards{
     
-    NSNumber *value = values[_face];
-    if(value){
-        return value.integerValue;
-    }else{
-        return 0;
+    for (AOCardView *card in otherCards){
+        if ([card.description isEqualToString:self.description]){
+            NSLog(@"%@", self.description);
+        }
     }
+    
+    
 }
-
 - (NSString*)description{
     return [NSString stringWithFormat:@"%@%@",_face,_suit];
 }
