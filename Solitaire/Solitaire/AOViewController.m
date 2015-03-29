@@ -18,14 +18,14 @@
 
 
 
-const CGFloat CardWidth = 43.0f;   // this includes drop shadows
-const CGFloat CardHeight = 50.0f;
+const CGFloat CardWidth = 40.0f;   // this includes drop shadows
+const CGFloat CardHeight = 55.0f;
 
-const CGFloat SuitWidth = 17.0f;   // this includes drop shadows
+const CGFloat SuitWidth = 20.0f;   // this includes drop shadows
 const CGFloat SuitHeight = 13.0f;
 
-const CGFloat FaceWidth = 20.0f;   // this includes drop shadows
-const CGFloat FaceHeight = 13.0f;
+const CGFloat FaceWidth = 10.0f;   // this includes drop shadows
+const CGFloat FaceHeight = 8.0f;
 
 
 
@@ -34,9 +34,6 @@ const CGFloat FaceHeight = 13.0f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-	// Do any additional setup after loading the view, typically from a nib.
-   
     [self setupDeck];
     [self createCardDeck];
     
@@ -53,21 +50,10 @@ const CGFloat FaceHeight = 13.0f;
         for (NSString *face in faces) {
             AOCardView *cardView = [[AOCardView alloc] initWithFace:face suit:suit];
             [_deck addObject:cardView];
-            
-            
-            }
+        }
     }
-   // int suitnum = 1;
-  //  for (AOCardView *card in _deck){
-      //  NSLog(@"%@", card.suit );
-      //  NSLog(@"%d", suitnum++);
-   // }
+  
 }
-
-
-
-
-
 
 
 
@@ -77,64 +63,59 @@ const CGFloat FaceHeight = 13.0f;
     
     int labelCount = [_deck count];
     int  b;
-    int x= 5;
+    int x= 15;
     int m = 0;
     for (int i=1; i<=7; i++) {
-        int y = 20;
+        int y = 25;
         if (i==7){
             b=labelCount-m;
         }else{
             
             b=random() % 12;
         }
-        
-     
-            for (int j=1; j<=b; j++) {
+        for (int j=1; j<=b; j++) {
             
             CGRect  viewRect = CGRectMake(x, y, CardWidth, CardHeight);
             UIView *view = [[UIView alloc] initWithFrame:viewRect];
-            [view setContentMode:UIViewContentModeCenter]
-                ;
-                view.clipsToBounds = YES;
-                view.backgroundColor = [UIColor whiteColor];
-              //  UILabel *viewLabel = [[UILabel alloc] initWithFrame:CGRectMake(2,6,FaceWidth,FaceHeight)];
-               // UILabel *viewLabel1 = [[UILabel alloc] initWithFrame:CGRectMake(10,24,SuitWidth,SuitHeight)];
-                 UILabel *viewLabel3 = [[UILabel alloc] initWithFrame:CGRectMake(10,10,SuitWidth,SuitHeight)];
-                [viewLabel3  setContentScaleFactor:0.2f];
-                viewLabel3.clipsToBounds = YES;
-                
-                
-                view.layer.cornerRadius = 5;
-                view.layer.borderWidth = 1.0f;
-                view.layer.borderColor =[UIColor grayColor].CGColor;
+            [view setContentMode:UIViewContentModeCenter];
+            view.clipsToBounds = YES;
+            view.backgroundColor = [UIColor whiteColor];
+            UILabel *viewLabel3 = [[UILabel alloc] initWithFrame:CGRectMake(5,5,SuitWidth,SuitHeight)];
             
-                
-             
-                    AOCardView *card =[_deck objectAtIndex:random() % [_deck count]];
-                    viewLabel3.text = card.description;
-                
-                //    NSLog(@"%@", viewLabel3.text);
-                
-               if([viewLabel3.text containsString:@"♥" ] ||[viewLabel3.text containsString:@"♦"]){
-                    viewLabel3.textColor = [UIColor redColor];
-                }
-               // }
+            [viewLabel3  setContentScaleFactor:0.2f];
+            viewLabel3.clipsToBounds = YES;
+            view.layer.cornerRadius = 5;
+            view.layer.borderWidth = 1.0f;
+            view.layer.borderColor =[UIColor grayColor].CGColor;
             
-                [view addSubview:viewLabel3];
-                //[view addSubview:viewLabel1];
-                [self.view addSubview:view];
-                [_deck removeObject:card];
-                y =y-20+CardHeight;
-                
-                if (m<(labelCount+1)) {
-                    m =m+1;
-                }else{
-                    return;
-                }
+            AOCardView *card =[_deck objectAtIndex:random() % [_deck count]];
+            viewLabel3.text = card.description;
+            
+            if([viewLabel3.text containsString:@"♥" ] ||[viewLabel3.text containsString:@"♦"])
+            {
+                viewLabel3.textColor = [UIColor redColor];
             }
-        x=x+1+CardWidth;
+            
+            
+            viewLabel3.numberOfLines = 0;
+            [viewLabel3 sizeToFit];
+
+
+            [view addSubview:viewLabel3];
+            [self.view addSubview:view];
+            [_deck removeObject:card];
+           
+            y =y-30+CardHeight;
+            
+            if (m<(labelCount+1)) {
+                m =m+1;
+            }else{
+                return;
+            }
+        }
+        x=x+2+CardWidth;
         
-            }
+    }
     
 }
 
