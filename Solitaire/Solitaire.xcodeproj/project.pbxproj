@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		299F20501AC9AD100075A7F7 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 299F204F1AC9AD100075A7F7 /* Card.m */; };
 		B39587E31AC09A33004FECFD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B39587E21AC09A33004FECFD /* Foundation.framework */; };
 		B39587E51AC09A33004FECFD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B39587E41AC09A33004FECFD /* CoreGraphics.framework */; };
 		B39587E71AC09A33004FECFD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B39587E61AC09A33004FECFD /* UIKit.framework */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		299F204E1AC9AD100075A7F7 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		299F204F1AC9AD100075A7F7 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
 		B39587DF1AC09A33004FECFD /* Solitaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solitaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B39587E21AC09A33004FECFD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B39587E41AC09A33004FECFD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -122,6 +125,8 @@
 				B39587F81AC09A33004FECFD /* AOViewController.m */,
 				B3E5533E1AC2093100324214 /* AOCardView.h */,
 				B3E5533F1AC2093100324214 /* AOCardView.m */,
+				299F204E1AC9AD100075A7F7 /* Card.h */,
+				299F204F1AC9AD100075A7F7 /* Card.m */,
 				B39587FA1AC09A33004FECFD /* Images.xcassets */,
 				B39587E91AC09A33004FECFD /* Supporting Files */,
 			);
@@ -255,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				299F20501AC9AD100075A7F7 /* Card.m in Sources */,
 				B3E553401AC2093100324214 /* AOCardView.m in Sources */,
 				B39587F31AC09A33004FECFD /* AOAppDelegate.m in Sources */,
 				B39587F91AC09A33004FECFD /* AOViewController.m in Sources */,

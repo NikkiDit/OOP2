@@ -8,10 +8,12 @@
 
 #import "AOViewController.h"
 #import "AOCardView.h"
+#import "Card.h"
 
 @interface AOViewController ()
 @property (nonatomic,strong) NSMutableArray *deck;
 
+@property UIView *card;
 @end
 
 
@@ -35,8 +37,6 @@ const CGFloat FaceHeight = 8.0f;
 
     [self setupDeck];
     [self createCardDeck];
-   
-    
 }
 -(void)setupDeck{
     // create the card deck array
@@ -79,10 +79,10 @@ const CGFloat FaceHeight = 8.0f;
         for (int j=1; j<=b; j++) {
             
             CGRect  viewRect = CGRectMake(x, y, CardWidth, CardHeight);
-            UIView *view = [[UIView alloc] initWithFrame:viewRect];
-            [view setContentMode:UIViewContentModeCenter];
-            view.clipsToBounds = YES;
-            view.backgroundColor = [UIColor whiteColor];
+             _card = [[UIView alloc] initWithFrame:viewRect];
+            [_card setContentMode:UIViewContentModeCenter];
+            _card.clipsToBounds = YES;
+            _card.backgroundColor = [UIColor whiteColor];
             UILabel *viewLabel3 = [[UILabel alloc] initWithFrame:CGRectMake(1,1,SuitWidth,SuitHeight)];
             UILabel *viewLabel4 = [[UILabel alloc] initWithFrame:CGRectMake(CardWidth-21,CardHeight-42,SuitWidth,SuitHeight)];
             
@@ -92,14 +92,14 @@ const CGFloat FaceHeight = 8.0f;
             viewLabel4.clipsToBounds = YES;
             
             
-            view.layer.cornerRadius = 5;
-            view.layer.borderWidth = 1.0f;
-            view.layer.borderColor =[UIColor grayColor].CGColor;
+            _card.layer.cornerRadius = 5;
+            _card.layer.borderWidth = 1.0f;
+            _card.layer.borderColor =[UIColor grayColor].CGColor;
             
-            AOCardView *card =[_deck objectAtIndex:random() % [_deck count]];
-            viewLabel3.text = card.description;
+            AOCardView *cardView=[_deck objectAtIndex:random() % [_deck count]];
+            viewLabel3.text = cardView.description;
             
-            viewLabel4.text = card.description;
+            viewLabel4.text = cardView.description;
             if([viewLabel3.text containsString:@"♥" ] ||[viewLabel3.text containsString:@"♦"]||[viewLabel4.text containsString:@"♥" ] ||[viewLabel4.text containsString:@"♦"])
             {
                 viewLabel3.textColor = [UIColor redColor];
@@ -110,7 +110,7 @@ const CGFloat FaceHeight = 8.0f;
             [viewLabel3 sizeToFit];
             viewLabel4.numberOfLines = 0;
             [viewLabel4 sizeToFit];
-            [view addSubview:viewLabel3];
+            [_card addSubview:viewLabel3];
             
             
           
@@ -122,10 +122,10 @@ const CGFloat FaceHeight = 8.0f;
             
             viewLabel4.transform = CGAffineTransformConcat(labelSize, xform);
             
-            [view addSubview:viewLabel3];
-            [view addSubview:viewLabel4];
-            [self.view addSubview:view];
-            [_deck removeObject:card];
+            [_card addSubview:viewLabel3];
+            [_card addSubview:viewLabel4];
+            [self.view addSubview:_card];
+            [_deck removeObject:_card];
            
             y =y-50+CardHeight;
             
@@ -140,7 +140,18 @@ const CGFloat FaceHeight = 8.0f;
     }
     
 }
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView:self.view];
+    
+    [UIView animateWithDuration:2.0
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+                       
+                         _card.center = location;
+                     } completion:nil];
+}
 
-
-         
 @end
