@@ -17,7 +17,7 @@
 
 
 const CGFloat CardWidth = 45.0f;   // this includes drop shadows
-const CGFloat CardHeight = 75.0f;
+const CGFloat CardHeight = 70.0f;
 
 const CGFloat SuitWidth = 20.0f;   // this includes drop shadows
 const CGFloat SuitHeight = 13.0f;
@@ -114,12 +114,13 @@ const CGFloat FaceHeight = 8.0f;
             
             
           
-            CGAffineTransform labelSize = CGAffineTransformMakeScale(0.50, 0.5);
+            CGAffineTransform labelSize = CGAffineTransformMakeScale(0.6, 0.6);
             viewLabel3.transform = labelSize;
-            viewLabel4.transform = labelSize;
+           
             // transform suit
-            CGAffineTransform xform = CGAffineTransformMakeRotation(M_PI/1.0) ;
-            viewLabel4.transform = xform;
+            CGAffineTransform xform = CGAffineTransformMakeRotation(M_PI);
+            
+            viewLabel4.transform = CGAffineTransformConcat(labelSize, xform);
             
             [view addSubview:viewLabel3];
             [view addSubview:viewLabel4];
