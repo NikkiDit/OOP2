@@ -15,5 +15,5 @@
 
 
 
-//- touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+- touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 @end

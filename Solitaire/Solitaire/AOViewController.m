@@ -8,11 +8,9 @@
 
 #import "AOViewController.h"
 #import "AOCardView.h"
-#import "Card.h"
 
 @interface AOViewController ()
 @property (nonatomic,strong) NSMutableArray *deck;
-
 @property UIView *card;
 @end
 
@@ -34,9 +32,11 @@ const CGFloat FaceHeight = 8.0f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     [self setupDeck];
     [self createCardDeck];
+    
+    
 }
 -(void)setupDeck{
     // create the card deck array
@@ -57,13 +57,13 @@ const CGFloat FaceHeight = 8.0f;
         NSUInteger n = arc4random_uniform(i + 1);
         [_deck exchangeObjectAtIndex:i withObjectAtIndex:n];
     }
-   
+    
 }
 
 
 
 - (void) createCardDeck{
-  
+    
     int labelCount = [_deck count];
     int  b;
     int x= 2;
@@ -79,7 +79,7 @@ const CGFloat FaceHeight = 8.0f;
         for (int j=1; j<=b; j++) {
             
             CGRect  viewRect = CGRectMake(x, y, CardWidth, CardHeight);
-             _card = [[UIView alloc] initWithFrame:viewRect];
+            _card = [[UIView alloc] initWithFrame:viewRect];
             [_card setContentMode:UIViewContentModeCenter];
             _card.clipsToBounds = YES;
             _card.backgroundColor = [UIColor whiteColor];
@@ -96,10 +96,10 @@ const CGFloat FaceHeight = 8.0f;
             _card.layer.borderWidth = 1.0f;
             _card.layer.borderColor =[UIColor grayColor].CGColor;
             
-            AOCardView *cardView=[_deck objectAtIndex:random() % [_deck count]];
-            viewLabel3.text = cardView.description;
+            AOCardView *card =[_deck objectAtIndex:random() % [_deck count]];
+            viewLabel3.text = card.description;
             
-            viewLabel4.text = cardView.description;
+            viewLabel4.text = card.description;
             if([viewLabel3.text containsString:@"♥" ] ||[viewLabel3.text containsString:@"♦"]||[viewLabel4.text containsString:@"♥" ] ||[viewLabel4.text containsString:@"♦"])
             {
                 viewLabel3.textColor = [UIColor redColor];
@@ -110,13 +110,13 @@ const CGFloat FaceHeight = 8.0f;
             [viewLabel3 sizeToFit];
             viewLabel4.numberOfLines = 0;
             [viewLabel4 sizeToFit];
+            
             [_card addSubview:viewLabel3];
+           
             
-            
-          
             CGAffineTransform labelSize = CGAffineTransformMakeScale(0.6, 0.6);
             viewLabel3.transform = labelSize;
-           
+            
             // transform suit
             CGAffineTransform xform = CGAffineTransformMakeRotation(M_PI);
             
@@ -125,8 +125,8 @@ const CGFloat FaceHeight = 8.0f;
             [_card addSubview:viewLabel3];
             [_card addSubview:viewLabel4];
             [self.view addSubview:_card];
-            [_deck removeObject:_card];
-           
+            [_deck removeObject:card];
+            
             y =y-50+CardHeight;
             
             if (m<(labelCount+1)) {
@@ -147,11 +147,13 @@ const CGFloat FaceHeight = 8.0f;
     
     [UIView animateWithDuration:2.0
                           delay:0.0
-                        options:UIViewAnimationOptionCurveEaseOut
+                        options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
-                       
+                         
                          _card.center = location;
                      } completion:nil];
+    
+    
+    
 }
-
 @end
