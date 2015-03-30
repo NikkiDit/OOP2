@@ -110,10 +110,17 @@ const CGFloat FaceHeight = 8.0f;
             [viewLabel3 sizeToFit];
             viewLabel4.numberOfLines = 0;
             [viewLabel4 sizeToFit];
-            
             [view addSubview:viewLabel3];
-            CGAffineTransform xform = CGAffineTransformMakeRotation(M_PI/1.0);
+            
+            
+          
+            CGAffineTransform labelSize = CGAffineTransformMakeScale(0.50, 0.5);
+            viewLabel3.transform = labelSize;
+            viewLabel4.transform = labelSize;
+            // transform suit
+            CGAffineTransform xform = CGAffineTransformMakeRotation(M_PI/1.0) ;
             viewLabel4.transform = xform;
+            
             [view addSubview:viewLabel3];
             [view addSubview:viewLabel4];
             [self.view addSubview:view];
