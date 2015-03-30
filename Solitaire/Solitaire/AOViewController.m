@@ -16,8 +16,8 @@
 
 
 
-const CGFloat CardWidth = 40.0f;   // this includes drop shadows
-const CGFloat CardHeight = 55.0f;
+const CGFloat CardWidth = 45.0f;   // this includes drop shadows
+const CGFloat CardHeight = 75.0f;
 
 const CGFloat SuitWidth = 20.0f;   // this includes drop shadows
 const CGFloat SuitHeight = 13.0f;
@@ -66,7 +66,7 @@ const CGFloat FaceHeight = 8.0f;
   
     int labelCount = [_deck count];
     int  b;
-    int x= 15;
+    int x= 2;
     int m = 0;
     for (int i=1; i<=7; i++) {
         int y = 25;
@@ -83,10 +83,15 @@ const CGFloat FaceHeight = 8.0f;
             [view setContentMode:UIViewContentModeCenter];
             view.clipsToBounds = YES;
             view.backgroundColor = [UIColor whiteColor];
-            UILabel *viewLabel3 = [[UILabel alloc] initWithFrame:CGRectMake(5,5,SuitWidth,SuitHeight)];
+            UILabel *viewLabel3 = [[UILabel alloc] initWithFrame:CGRectMake(1,1,SuitWidth,SuitHeight)];
+            UILabel *viewLabel4 = [[UILabel alloc] initWithFrame:CGRectMake(CardWidth-21,CardHeight-42,SuitWidth,SuitHeight)];
             
             [viewLabel3  setContentScaleFactor:0.2f];
             viewLabel3.clipsToBounds = YES;
+            [viewLabel4  setContentScaleFactor:0.2f];
+            viewLabel4.clipsToBounds = YES;
+            
+            
             view.layer.cornerRadius = 5;
             view.layer.borderWidth = 1.0f;
             view.layer.borderColor =[UIColor grayColor].CGColor;
@@ -94,21 +99,27 @@ const CGFloat FaceHeight = 8.0f;
             AOCardView *card =[_deck objectAtIndex:random() % [_deck count]];
             viewLabel3.text = card.description;
             
-            if([viewLabel3.text containsString:@"♥" ] ||[viewLabel3.text containsString:@"♦"])
+            viewLabel4.text = card.description;
+            if([viewLabel3.text containsString:@"♥" ] ||[viewLabel3.text containsString:@"♦"]||[viewLabel4.text containsString:@"♥" ] ||[viewLabel4.text containsString:@"♦"])
             {
                 viewLabel3.textColor = [UIColor redColor];
-            }
+                viewLabel4.textColor = [UIColor redColor];            }
             
             
             viewLabel3.numberOfLines = 0;
             [viewLabel3 sizeToFit];
-
-
+            viewLabel4.numberOfLines = 0;
+            [viewLabel4 sizeToFit];
+            
             [view addSubview:viewLabel3];
+            CGAffineTransform xform = CGAffineTransformMakeRotation(M_PI/1.0);
+            viewLabel4.transform = xform;
+            [view addSubview:viewLabel3];
+            [view addSubview:viewLabel4];
             [self.view addSubview:view];
             [_deck removeObject:card];
            
-            y =y-30+CardHeight;
+            y =y-50+CardHeight;
             
             if (m<(labelCount+1)) {
                 m =m+1;
@@ -116,7 +127,7 @@ const CGFloat FaceHeight = 8.0f;
                 return;
             }
         }
-        x=x+2+CardWidth;
+        x=x+0.5+CardWidth;
         
     }
     
