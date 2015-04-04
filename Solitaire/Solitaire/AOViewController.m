@@ -17,7 +17,7 @@
 
 
 const CGFloat CardWidth = 45.0f;   // this includes drop shadows
-const CGFloat CardHeight = 70.0f;
+const CGFloat CardHeight = 60.0f;
 
 const CGFloat SuitWidth = 20.0f;   // this includes drop shadows
 const CGFloat SuitHeight = 13.0f;
@@ -65,16 +65,15 @@ const CGFloat FaceHeight = 8.0f;
 - (void) createCardDeck{
     
     int labelCount = [_deck count];
-    int  b;
+    int  b=2;
     int x= 2;
     int m = 0;
-    for (int i=1; i<=7; i++) {
-        int y = 25;
-        if (i==7){
+    for (int i=1; i<=8; i++) {
+        int y = 120;
+        if (i==8){
             b=labelCount-m;
-        }else{
-            
-            b=random() % 12;
+            x=2;
+            y=40;
         }
         for (int j=1; j<=b; j++) {
             
@@ -127,8 +126,9 @@ const CGFloat FaceHeight = 8.0f;
             [self.view addSubview:_card];
             [_deck removeObject:card];
             
+            if(i<8){
             y =y-50+CardHeight;
-            
+            }
             if (m<(labelCount+1)) {
                 m =m+1;
             }else{
@@ -136,7 +136,7 @@ const CGFloat FaceHeight = 8.0f;
             }
         }
         x=x+0.5+CardWidth;
-        
+        b= b+1;
     }
     
 }
@@ -153,7 +153,7 @@ const CGFloat FaceHeight = 8.0f;
                          _card.center = location;
                      } completion:nil];
     
-    
+
     
 }
 @end
