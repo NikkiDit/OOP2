@@ -140,7 +140,7 @@ const CGFloat FaceHeight = 8.0f;
     }
     
 }
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+-(id)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:self.view];
@@ -153,7 +153,7 @@ const CGFloat FaceHeight = 8.0f;
                          _card.center = location;
                      } completion:nil];
     
-
+    return nil;
     
 }
 @end
