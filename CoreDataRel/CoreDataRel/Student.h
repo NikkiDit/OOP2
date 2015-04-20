@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Class;
+@class StudentClass;
 
 @interface Student : NSManagedObject
 
 @property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * phone;
-@property (nonatomic, retain) Class *studentClass;
+@property (nonatomic, retain) StudentClass *studentClass;
 
 @end
