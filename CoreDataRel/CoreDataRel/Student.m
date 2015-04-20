@@ -7,7 +7,7 @@
 //
 
 #import "Student.h"
-#import "Class.h"
+#import "StudentClass.h"
 
 
 @implementation Student
